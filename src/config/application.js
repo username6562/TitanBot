@@ -108,24 +108,5 @@ Object.freeze(appConfig);
 
 export default appConfig;
 
-import { botConfig } from './config/botConfig.js'; // Ensure this matches your path!
-
-client.on('messageCreate', async (message) => {
-  // 1. Ignore text from other bots or system updates
-  if (message.author.bot) return;
-
-  // 2. Safely capture your configured prefix ("$")
-  const prefix = botConfig.commands.prefix;
-
-  // 3. Stop running if the message doesn't start with your prefix
-  if (!message.content.startsWith(prefix)) return;
-
-  // 4. Isolate the command and its arguments
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
-  const commandName = args.shift().toLowerCase();
 
   // 5. Hardcoded test command to verify it works!
-  if (commandName === 'ping') {
-    return message.reply('Pong! 🏓 The prefix system is working!');
-  }
-});
